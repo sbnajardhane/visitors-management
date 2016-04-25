@@ -1,0 +1,5 @@
+<form action="http://127.0.0.1:8000/polls/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>

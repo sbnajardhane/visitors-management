@@ -1,0 +1,47 @@
+<div>
+    {% for profiles in events %}
+
+	    <p>Event Name : {{profiles.event_name}}</p>
+	    <p><span >Event ID : <span >{{profiles.event_id}}</span></span>
+	    <span>Organiser : {{profiles.organiser}}</span></p>
+        <span>Location : {{profiles.location}}</span></p>
+
+	    <p>Date : {{profiles.date}}</p>
+        <input id="profilePersonId" type="hidden" value={{profiles.person_id}}>
+ 	{% endfor %}
+ 	<hr>
+    <div id="comments">
+    <h3 style="">Comments</h3>
+        {% for comm in comments %}
+            <p>Date : {{comm.date}}</p>
+            <p>Comment : {{comm.comment}}</p>
+            <hr>
+
+        {% endfor %}
+    </div>
+
+        <input type="text" id="commentText">
+        <button id="commentButton" onclick="commentButton()">Add Comment</button>
+
+ 	<div class="content table-responsive table-full-width">
+ 		<h2 align="center">Visitors Visit</h2>
+        <table class="table table-hover table-striped" id="pro" >
+            <thead>
+                <th style = "font-size: 1.5em;">Person Id</th>
+                <th style = "font-size: 1.5em;">In-time</th>
+                <th style = "font-size: 1.5em;">Out-Time</th>
+                <th style = "font-size: 1.5em;">Purpose</th>
+            </thead>
+            <tbody>
+			{% for table in visitor %}
+                <tr data-popup-open="popup-1">
+                    <td> {{table.person_id}}</td>
+                    <td> {{table.intime}}</td>
+                    <td> {{table.outtime}}</td>
+                    <td> {{table.purpose}}</td>
+                </tr>
+			{% endfor %}
+            </tbody>
+        </table>
+	</div>
+</div>

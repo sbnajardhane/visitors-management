@@ -1,0 +1,309 @@
+<!doctype html>
+{% load staticfiles %}
+<html lang="en" >
+<head>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Visitor Management</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="{% static "css/animate.min.css" %}" rel="stylesheet"/>
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="{% static "css/light-bootstrap-dashboard.css" %}" rel="stylesheet"/>
+    <!--  Popup window CSS    -->
+    <link href="{% static "css/popupjquery.css" %}" rel="stylesheet"/>
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="{% static "css/demo.css" %}" rel="stylesheet" />
+
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="{% static "css/pe-icon-7-stroke.css" %}" rel="stylesheet" />
+    <meta charset="utf-8">
+    <title>jQuery UI Datepicker - Default functionality</title>
+    <link rel="stylesheet" href="{% static "css/jquery-ui.css" %}" rel="stylesheet">        
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    
+
+</head>
+<body onload="intime()">
+<div class="wrapper">
+{% block sidebar %}
+    <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+    <!--
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="http://127.0.0.1:8000/visitor/dashboard" class="simple-text">
+                   Visitor Management
+                </a>
+            </div>
+            <ul class="nav">
+                <li class="active">
+                    <a href="/visitor/dashboard/">
+                        <i class="pe-7s-graph"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="user.html">
+                        <i class="pe-7s-user"></i>
+                        <p>Sample</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/visitor/table">
+                        <i class="pe-7s-note2"></i>
+                        <p>Table List</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/visitor/count">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>Pie Chart</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/visitor/countdate">
+                        <i class="pe-7s-science"></i>
+                        <p>Graph</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin">
+                        <i class="pe-7s-map-marker"></i>
+                        <p>Admin login</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="notifications.html">
+                        <i class="pe-7s-bell"></i>
+                        <p>Sample</p>
+                    </a>
+                </li>
+                <li class="active-pro">
+                    <a href="http://www.coep.org.in">
+                        <i class="pe-7s-rocket"></i>
+                        <p>COEP</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Summary</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- <p><span>Date1: <input type="text" id="datepicker" name="datepicker" onchange="intime();"></span><span> In between </span>
+        <span>Date2: <input type="text" id="datepicker1" name="datepicker1" onchange="intime();"></span><span id="error" style="color: red"></span></p> -->
+        <div>
+            {% for profiles in profile %}
+                <p>Staff Name : {{profiles.name}}</p>
+                <p>
+                    <span>Staff Id : {{profiles.person_id}}</span>
+                    <span>ID Type : {{profiles.id_type}}</span>
+                    {% for staffs in staff %}
+                        <p>Post : <span id="staffId">{{staffs.staff_type}}</span></p>
+                    {% endfor %}
+                </p>    
+                <p>Sex : {{profiles.sex}}</p>
+            {% endfor %}
+            <hr>
+            <p>
+                <span>Date1:
+                    <input type="text" id="datepicker" name="datepicker" onclick="intime();">
+                </span>
+                <span> In between </span>
+                <span>Date2:
+                    <input type="text" id="datepicker1" name="datepicker1" onchange="intime();">
+                </span>
+                <span id="error" style="color: red"></span>
+            </p>
+            <p id="sample"></p>
+        </div>
+                        
+    </div>                
+
+        <!--<div style="background-color:white; border-style: solid; border-color: #ff0000 #0000ff; color: black; text-align:center;z-index: 100; position: fixed; top: 100px;" id="visitor_profile"></div>-->
+        
+    
+</div>
+
+    <div width="90%"class="modal fade" id="userProfile" role="dialog">
+        <div class="modal-dialog" style="width: 90%;">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">User Profile</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="profiledata">
+                             
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+     <!--   Core JS Files   -->
+    
+    <script src="{% static "js/jquery-1.10.2.js" %}" type="text/javascript"></script>
+    <script src="{% static "js/bootstrap.min.js" %}" type="text/javascript"></script>
+
+    <!--  Checkbox, Radio & Switch Plugins -->
+    <script src="{% static "js/bootstrap-checkbox-radio-switch.js" %}"></script>
+
+    <!--  Charts Plugin -->
+    <script src="{% static "js/chartist.min.js" %}"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="{% static "js/bootstrap-notify.js" %}"></script>
+
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+    <script src="{% static "js/light-bootstrap-dashboard.js" %}"></script>
+
+    <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+    <script src="{% static "js/demo.js" %}"></script>
+
+    <script src="{% static "js/jquery-ui.js" %}"></script>
+    <script type="text/javascript">
+    
+</script>
+    <script>
+        $(function() {
+            $("#datepicker").datepicker();
+        });
+        $(function() {
+            $("#datepicker1").datepicker();
+        });
+    </script>
+
+    <script type="text/javascript">
+        function intime() {
+            var date1 = document.getElementById("datepicker").value;
+            var date2 = document.getElementById("datepicker1").value;
+            date1 =  String(date1);
+            date2 =  String(date2);
+            
+            date1 =  String(date1);
+            var date = date1.substring(3, 5);
+            var month = date1.substring(0, 2);
+            var year = date1.substring(6, 10);
+            var myDate1 = new Date(year, month - 1, date);
+
+            var date = date2.substring(3, 5);
+            var month = date2.substring(0, 2);
+            var year = date2.substring(6, 10);
+            var staffId = document.getElementById("staffId").innerHTML; 
+            var myDate2 = new Date(year, month - 1, date);
+            if (myDate1 > myDate2) {
+                document.getElementById("error").innerHTML = "Date must be greater";
+                $("#datepicker1").val('');
+                document.getElementById("datepicker1").value = "";
+                $(document).ready( function() {
+                    $('#error').delay(3000).fadeOut();
+                });
+            }
+            $.get('/visitor/table1/', {staffId : staffId, terid: date1, date2 : date2}, function (data) {
+                alert(data);
+                document.getElementById("sample").innerHTML = data;
+            });
+        }
+    </script>
+
+    <script type="text/javascript">
+    function profile() {
+        $("#pro").on('click','.side-link',function(e){
+            e.preventDefault();
+            var id = $(this).attr('value');
+            $.get('/visitor/profile/', {profileId : id}, function (data) {
+                //alert(data);
+                document.getElementById("profiledata").innerHTML = data;
+            });
+        });
+    //     var abc;
+    //     var cells = document.getElementsByTagName("a");
+    //     for(var i = 0; i <= cells.length; i++){
+    //         cells[i].addEventListener('click', clickHandler);
+    //     }
+    //     function clickHandler()
+    //     {   
+    //         abc = this.textContent;
+    //         $.get('/visitor/profile/', {profileId : abc}, function (data) {
+    //             //alert(data);
+    //             document.getElementById("profiledata").innerHTML = data;
+    //         });
+    //     }
+        
+    }    
+    </script>
+    
+<script type="text/javascript">
+        function commentButton() {
+            var comment = document.getElementById("commentText").value;
+            var person_id = document.getElementById("profilePersonId").value;
+            var paraDate = document.createElement("p");
+            var paraComment = document.createElement("p");
+            var hr = document.createElement("hr");
+            var nodeDate = document.createTextNode("Date :" + Date());
+            var nodeComment = document.createTextNode("Comment :" + comment);
+            paraDate.appendChild(nodeDate);
+            paraComment.appendChild(nodeComment);
+            
+            var element = document.getElementById("comments");
+            element.appendChild(paraDate);
+            element.appendChild(paraComment);
+            element.appendChild(hr);
+//             var para = document.createElement("p");
+// var node = document.createTextNode("This is new.");
+// para.aptependChild(node);
+
+// var element = document.getElementById("div1");
+// // element.appendChild(para);
+//             console.log(document.getElementById("newDate"));
+//             document.getElementById("newComment").innerHTML = comment;
+
+            console.log(comment);
+            $.get('/../visitor/profile/comment/', {comment : comment, person_id : person_id}, function (data) {
+                alert(data);
+
+            });
+        }
+</script>                
+    
+</html>
