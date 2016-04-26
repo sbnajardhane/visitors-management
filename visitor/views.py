@@ -111,7 +111,7 @@ def insert(request):
 	#  		form = UploadFileForm()
 	# return render_to_response('sidebar.html', {'form' : form} ) 
 
-    wb = open_workbook("/home/shubham/proj/sample.xls")
+    wb = open_workbook("/home/vivek/Desktop/data.xlsx")
     for s in wb.sheets():
         for row in range(1, s.nrows):
 			col_value = []
