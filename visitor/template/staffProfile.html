@@ -42,73 +42,7 @@
 </head>
 <body onload="intime()">
 <div class="wrapper">
-{% block sidebar %}
-    <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
-    <!--
-
-        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
-        Tip 2: you can also add an image using data-image tag
-
-    -->
-        <div class="sidebar-wrapper">
-            <div class="logo">
-                <a href="http://127.0.0.1:8000/visitor/dashboard" class="simple-text">
-                   Visitor Management
-                </a>
-            </div>
-            <ul class="nav">
-                <li class="active">
-                    <a href="/visitor/dashboard/">
-                        <i class="pe-7s-graph"></i>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="user.html">
-                        <i class="pe-7s-user"></i>
-                        <p>Sample</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="/visitor/table">
-                        <i class="pe-7s-note2"></i>
-                        <p>Table List</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="/visitor/count">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Pie Chart</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="/visitor/countdate">
-                        <i class="pe-7s-science"></i>
-                        <p>Graph</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="/admin">
-                        <i class="pe-7s-map-marker"></i>
-                        <p>Admin login</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="notifications.html">
-                        <i class="pe-7s-bell"></i>
-                        <p>Sample</p>
-                    </a>
-                </li>
-                <li class="active-pro">
-                    <a href="http://www.coep.org.in">
-                        <i class="pe-7s-rocket"></i>
-                        <p>COEP</p>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-{% endblock %}
+{% include 'sidebar.html' %}
 
     <div class="main-panel">
         <nav class="navbar navbar-default navbar-fixed">
