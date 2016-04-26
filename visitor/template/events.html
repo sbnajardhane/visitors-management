@@ -224,7 +224,37 @@
 
     </script>
 
-    <script type="text/javascript">
+<script type="text/javascript">
+        function commentButton() {
+            var comment = document.getElementById("commentText").value;
+            var person_id = document.getElementById("eventId").innerHTML;
+            alert(person_id);
+            var paraDate = document.createElement("p");
+            var paraComment = document.createElement("p");
+            var hr = document.createElement("hr");
+            var nodeDate = document.createTextNode("Date :" + Date());
+            var nodeComment = document.createTextNode("Comment :" + comment);
+            paraDate.appendChild(nodeDate);
+            paraComment.appendChild(nodeComment);
+            
+            var element = document.getElementById("comments");
+            element.appendChild(paraDate);
+            element.appendChild(paraComment);
+            element.appendChild(hr);
+//             var para = document.createElement("p");
+// var node = document.createTextNode("This is new.");
+// para.aptependChild(node);
 
-    </script>>
+// var element = document.getElementById("div1");
+// // element.appendChild(para);
+//             console.log(document.getElementById("newDate"));
+//             document.getElementById("newComment").innerHTML = comment;
+
+            console.log(comment);
+            $.get('/../visitor/profile/comment/', {comment : comment, person_id : person_id}, function (data) {
+                alert(data);
+
+            });
+        }
+</script>                
 </html>

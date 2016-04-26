@@ -1,20 +1,20 @@
 type = ['','info','success','warning','danger'];
-    	
+      
 /*var app = angular.module('myApp', []);
-	app.controller('countCtrl', function($scope, $http) {
+  app.controller('countCtrl', function($scope, $http) {
     $http.get("http://127.0.0.1:8000/visitor/count/")
     .then(function (response) {$scope.names = response.data.records;
      console.log($scope.names[0].Name);
 });
-	
+  
 });
-*/	
-	
+*/  
+  
 chart = document.getElementById("myVar").value;
 
 var a123 = chart.split(",");
 
-/*	
+/*  
 countdate = document.getElementById("countdate").value;
 alert(countdate);
 countdate = countdate.split(",");
@@ -118,7 +118,7 @@ demo = {
     
         Chartist.Pie('#chartPreferences', dataPreferences, optionsPreferences);
          
-	var obj = [8, 8,8,8,8,]
+  var obj = [8, 8,8,8,8,]
         Chartist.Pie('#chartPreferences', {
           labels: ['male', 'female'],
           series: a123
@@ -145,13 +145,13 @@ demo = {
         marker.setMap(map);
     },
     
-	showNotification: function(from, align){
-    	color = Math.floor((Math.random() * 4) + 1);
-    	
-    	$.notify({
-        	icon: "pe-7s-gift",
-        	message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
-        	
+  showNotification: function(from, align){
+      color = Math.floor((Math.random() * 4) + 1);
+      
+      $.notify({
+          icon: "pe-7s-gift",
+          message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
+          
         },{
             type: type[color],
             timer: 4000,
@@ -160,7 +160,7 @@ demo = {
                 align: align
             }
         });
-	}
+  }
 
     
 }

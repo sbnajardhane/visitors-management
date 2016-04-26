@@ -28,36 +28,47 @@ def male(request):
 	return render_to_response('male.html',
 				 {'male' : Person.objects.filter(sex='m')})
 
-def dashboard(request) :
-	return render_to_response('dashboard.html',
+def recent(request) :
+	return render_to_response('recent.html',
 				  {'person' : Person.objects.all().order_by('person_id')[:15:1]})
-def count(request) :
+def dashboard(request) :
 	a = Visitor.objects.values('to_whom').annotate(c=Count('to_whom')).order_by('-c')
 	male = Person.objects.filter(sex="m").count()
 	print "no of males"
 	print male
 	female = Person.objects.filter(sex="f").count()
 	print female
-	tym = Visitor.objects.filter(date = "42420.0").count()
+	tym = Visitor.objects.filter(date = "2016-02-26 00:00:00").count()
 
 	print "time = "
 	print tym
+	tym1 = Visitor.objects.filter(date = "2016-02-19 00:00:00").count()
+	tym2 = Visitor.objects.filter(date = "2016-02-20 00:00:00").count()	
+	tym3 = Visitor.objects.filter(date = "2016-02-21 00:00:00").count()	
+	tym4 = Visitor.objects.filter(date = "2016-02-22 00:00:00").count()
+	tym5 = Visitor.objects.filter(date = "2016-02-23 00:00:00").count()
+	tym6 = Visitor.objects.filter(date = "2016-02-24 00:00:00").count()
+	tym7 = Visitor.objects.filter(date = "2016-02-25 00:00:00").count()
+
+	adate  = str(tym1) +"," + str(tym2)+"," + str(tym3)+"," + str(tym4)+"," + str(tym5)+"," + str(tym6)+"," + str(tym7)
+	
 	#a = simplejson.dumps(a);
 	#return HttpResponse("works")
 	#print a[0].c
 	a  = str(male) +"," + str(female)
 		
-	return render_to_response('count.html', {"count" : a})
+	return render_to_response('dashboard.html', {"count" : a , "countdate" : adate})
 
 def countdate(request) :
 	
-	tym1 = Visitor.objects.filter(date = "42420.0").count()
-	tym2 = Visitor.objects.filter(date = "42423.0").count()	
-	tym3 = Visitor.objects.filter(date = "42424.0").count()	
-	tym4 = Visitor.objects.filter(date = "42425.0").count()
-	tym5 = Visitor.objects.filter(date = "42426.0").count()
-	tym6 = Visitor.objects.filter(date = "42421.0").count()
-	tym7 = Visitor.objects.filter(date = "42422.0").count()
+	tym1 = Visitor.objects.filter(date = "2016-02-19 00:00:00").count()
+	tym2 = Visitor.objects.filter(date = "2016-02-20 00:00:00").count()	
+	tym3 = Visitor.objects.filter(date = "2016-02-21 00:00:00").count()	
+	tym4 = Visitor.objects.filter(date = "2016-02-22 00:00:00").count()
+	tym5 = Visitor.objects.filter(date = "2016-02-23 00:00:00").count()
+	tym6 = Visitor.objects.filter(date = "2016-02-24 00:00:00").count()
+	tym7 = Visitor.objects.filter(date = "2016-02-25 00:00:00").count()
+
 	a  = str(tym1) +"," + str(tym2)+"," + str(tym3)+"," + str(tym4)+"," + str(tym5)+"," + str(tym6)+"," + str(tym7)
 		
 	return render_to_response('countdate.html', {"countdate" : a})
@@ -112,7 +123,7 @@ def insert(request):
 	#  		form = UploadFileForm()
 	# return render_to_response('sidebar.html', {'form' : form} ) 
 
-    wb = open_workbook("/home/vivek/Desktop/data.xlsx")
+    wb = open_workbook("/home/shubham/proj/sample.xls")
     for s in wb.sheets():
         for row in range(1, s.nrows):
 			col_value = []
@@ -201,8 +212,7 @@ def staffProfile(request, person_id):
 	try:
 		var = Staff.objects.get(pk = person_id)
 	except Staff.DoesNotExist:
-		raise Http404("Staff does not Exist")
-
+		raise Http404("staff Does Not Exist")
 	# person_id = request.GET['profileId']
 	print "person_id"
 	staff = Staff.objects.filter(person_id = person_id)

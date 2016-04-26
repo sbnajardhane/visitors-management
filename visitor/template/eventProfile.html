@@ -2,7 +2,7 @@
     {% for profiles in events %}
 
 	    <p>Event Name : {{profiles.event_name}}</p>
-	    <p><span >Event ID : <span >{{profiles.event_id}}</span></span>
+	    <p><span >Event ID : <span id="eventId">{{profiles.event_id}}</span></span>
 	    <span>Organiser : {{profiles.organiser}}</span></p>
         <span>Location : {{profiles.location}}</span></p>
 
@@ -21,7 +21,7 @@
     </div>
 
         <input type="text" id="commentText">
-        <button id="commentButton" onclick="commentButton()">Add Comment</button>
+        <button  onclick="commentButton()">Add Comment</button>
 
  	<div class="content table-responsive table-full-width">
  		<h2 align="center">Visitors Visit</h2>

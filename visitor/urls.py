@@ -6,7 +6,7 @@ urlpatterns = [
     url(r'^insert/$', 'visitor.views.insert'),
     url(r'^male/$','visitor.views.male'), 
     url(r'^dashboard/$','visitor.views.dashboard'),
-    url(r'^count/$','visitor.views.count'),
+    url(r'^recent/$','visitor.views.recent'),
     url(r'^countdate/$','visitor.views.countdate'),
     #url(r'^chart/$','visitor.views.chart_view'),
     url(r'^table/$','visitor.views.table'),
