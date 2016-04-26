@@ -18,6 +18,7 @@ from django.views.generic.base import TemplateView
 import json as simplejson
 from django.shortcuts import render
 from .forms import uploadExcel
+from django.http import Http404
 #from chartit import DataPool, Chart
 
 def sample_view(request):
@@ -197,6 +198,11 @@ def eventProfile(request):
 	)
 
 def staffProfile(request, person_id):
+	try:
+		var = Staff.objects.get(pk = person_id)
+	except Staff.DoesNotExist:
+		raise Http404("Staff does not Exist")
+
 	# person_id = request.GET['profileId']
 	print "person_id"
 	staff = Staff.objects.filter(person_id = person_id)
